@@ -5,7 +5,9 @@ An init file I wrote to run Halo CE Dedicated Server on my Headless Ubuntu Serve
 
 ## Dependencies
 wine - Used to run the Halo Windows Program on Linux.
+
 xvfb - Used to emulate a display for the GUI program.
+
 tmux - Used to allow console access from the command line.
 
 
