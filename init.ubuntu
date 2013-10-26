@@ -17,16 +17,17 @@ NAME=haloce
 DESC='Halo CE Dedicated Server'
 USER=$NAME
 DIR=/mnt/tank/gameserver-files/$NAME
+################
+
 DAEMON="tmux new-session -d -s $NAME"
 COMMAND="cd $DIR && xvfb-run -a env WINEDEBUG=-all wineconsole --backend=curses haloceded.exe"
-###############
+PID=`pgrep -u $USER -f "$DAEMON $COMMAND"`
 
-PID=`pgrep -u $NAME -f "$DAEMON $COMMAND"`
 as_user() {
 	if [ `whoami` = "$USER" ]; then
-		echo "You have access!"
+		sh -c "$1"
 	else
-	su - $USER -c "$1"
+		su - $USER -c "$1"
 	fi
 }
 
